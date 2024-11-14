@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>telza</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <span class="logo-text">telza</span>
+        </div>
+        <div class="balance-container">
+            <span class="currency">EGP</span>
+            <span class="balance">0.00</span>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h3 class="secondTitle">Add a new transaction:</h3>
+        <form id="expForm">
+            <div class="formLine">
+                <label for="type">Type:</label>
+                <select id="type">
+                    <option value="chooseOne">Choose one...</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+            </div>
+            <div class="formLine">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div class="formLine">
+                <label for="amount">Amount:</label>
+                <input type="text" id="amount">
+            </div>
+            <button type="submit" class="buttonSave">Add to transactions</button>
+        </form>
+    </div>
+    <div class="content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTable"></tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
