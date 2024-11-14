@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Budget Tracker</title>
+    <title>telza</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -12,50 +10,45 @@
         <div class="navbar-brand">
             <span class="logo-text">telza</span>
         </div>
+        <div class="balance-container">
+            <span class="currency">EGP</span>
+            <span class="balance">0.00</span>
+        </div>
     </nav>
-    <div class="container">
-        <div id="summary">
-            <h2>Monthly Budget</h2>
-            <input type="number" id="monthlyBudget" placeholder="Enter your monthly budget">
-            <button onclick="applyBudget()">Apply Budget</button>
-        </div>
-        <div id="incomeSection">
-            <h2>Add Income</h2>
-            <form id="incomeForm">
-                <input type="text" id="incomeSource" placeholder="Income Source">
-                <input type="number" id="incomeAmount" placeholder="Amount">
-                <button type="button" onclick="addIncome()">Add Income</button>
-            </form>
-        </div>
-        <div id="expenseSection">
-            <div class="filter-expenses">
-                <h3 id="expenseSectionTitle">Expenses</h3>
-                <button id="filterButton" onclick="filterExpenses()">Filter Expenses</button>
+
+    <div class="content">
+        <h3 class="secondTitle">Add a new transaction:</h3>
+        <form id="expForm">
+            <div class="formLine">
+                <label for="type">Type:</label>
+                <select id="type">
+                    <option value="chooseOne">Choose one</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
             </div>
-            <form id="expenseForm">
-                <input type="text" id="expenseCategory" placeholder="Category (e.g., Food, Transport)">
-                <input type="text" id="expenseDescription" placeholder="Description">
-                <input type="number" id="expenseAmount" placeholder="Amount">
-                <button type="button" onclick="addExpense()">Add Expense</button>
-            </form>
-        </div>
-        <div id="summary">
-            <h2>Summary</h2>
-            <p id="totalIncome">Total Income: 0.00 EGP</p>
-            <p id="totalExpenses">Total Expenses: 0.00 EGP</p>
-            <p id="remainingBalance">Remaining Balance: 0.00 EGP</p>
-        </div>
-        <table id="expenseTable">
+            <div class="formLine">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div class="formLine">
+                <label for="amount">Amount:</label>
+                <input type="text" id="amount">
+            </div>
+            <button type="submit" class="buttonSave">Add to transactions</button>
+        </form>
+    </div>
+    <div class="content">
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Category</th>
-                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Name</th>
                     <th>Amount</th>
                     <th>Options</th>
                 </tr>
             </thead>
-            <tbody id="transactionTable">
-            </tbody>
+            <tbody id="transactionTable"></tbody>
         </table>
     </div>
 

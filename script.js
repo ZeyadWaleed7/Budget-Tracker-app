@@ -1,83 +1,65 @@
-let incomeList = [];
-let expenseList = [];
-function addIncome() {
-    const source = document.getElementById('incomeSource').value;
-    const amount = parseFloat(document.getElementById('incomeAmount').value);
+let transactions = [];
 
-    if (source && amount) {
-        incomeList.push({ source, amount });
-        displayIncome();
-        calculateTotals();
+document.getElementById('expForm').addEventListener('submit', addTransaction);
+
+
+function addTransaction(event) {
+    event.preventDefault();
+
+  
+    let type = document.getElementById('type').value;
+    let name = document.getElementById('name').value;
+    let amount = document.getElementById('amount').value;
+
+    if (type !== 'chooseOne' && name.length > 0 && amount > 0) {
+        let transaction = {
+            type: type,
+            name: name,
+            amount: parseFloat(amount),
+            id: transactions.length > 0 ? transactions[transactions.length - 1].id + 1 : 1
+        };
+        transactions.push(transaction);
     }
-
-    document.getElementById('incomeSource').value = '';
-    document.getElementById('incomeAmount').value = '';
+    document.getElementById('expForm').reset();
+    showTransactions();
+    updateBalance();
 }
-function displayIncome() {
-    const incomeListElement = document.getElementById('incomeList');
-    incomeListElement.innerHTML = '';
-    incomeList.forEach((income, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${income.source}: ${income.amount} EGP`;
-        incomeListElement.appendChild(listItem);
-    });
-}
-function addExpense() {
-    const category = document.getElementById('expenseCategory').value;
-    const description = document.getElementById('expenseDescription').value;
-    const amount = parseFloat(document.getElementById('expenseAmount').value);
-
-    if (category && description && amount) {
-        expenseList.push({ category, description, amount });
-        displayExpenses();
-        calculateTotals();
-    }
-
-    document.getElementById('expenseCategory').value = '';
-    document.getElementById('expenseDescription').value = '';
-    document.getElementById('expenseAmount').value = '';
-}
-function displayExpenses(filteredExpenses = expenseList) {
-    const expenseListElement = document.getElementById('expenseList');
-    expenseListElement.innerHTML = '';
-    filteredExpenses.forEach((expense, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${expense.category} - ${expense.description}: ${expense.amount} EGP`;
-        expenseListElement.appendChild(listItem);
-    });
-}
-function filterExpenses() {
-    const selectedCategory = document.getElementById('categoryFilter').value;
-    const filteredExpenses = selectedCategory === 'all'
-        ? expenseList
-        : expenseList.filter(expense => expense.category === selectedCategory);
-    displayExpenses(filteredExpenses);
-}
-function calculateTotals() {
-    const totalIncome = incomeList.reduce((acc, income) => acc + income.amount, 0);
-    const totalExpenses = expenseList.reduce((acc, expense) => acc + expense.amount, 0);
-    const remainingBalance = totalIncome - totalExpenses;
-
-    document.getElementById('totalIncome').textContent = totalIncome.toFixed(2);
-    document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(2);
-    document.getElementById('remainingBalance').textContent = remainingBalance.toFixed(2);
-}
-
-function applyBudget() {
-    const budget = parseFloat(document.getElementById('monthlyBudget').value);
-    const totalExpenses = expenseList.reduce((acc, expense) => acc + expense.amount, 0);
-
-    if (budget && totalExpenses > budget) {
-        alert('Warning: You have exceeded your monthly budget!');
+function showTransactions() {
+    let transactionTable = document.getElementById('transactionTable');
+    transactionTable.innerHTML = '';
+    for (let i = 0; i < transactions.length; i++) {
+        let transaction = transactions[i];
+        let row = `
+            <tr>
+                <td>${transaction.type}</td>
+                <td>${transaction.name}</td>
+                <td>$${transaction.amount}</td>
+                <td><a class="deleteButton" onclick="deleteTransaction(${transaction.id})">Delete</a></td>
+            </tr>
+        `;
+        transactionTable.innerHTML += row;
     }
 }
-
-function displaySummary() {
-    calculateTotals();
-    document.getElementById('summary').style.display = 'block';
+function deleteTransaction(id) {
+    for (let i = 0; i < transactions.length; i++) {
+        if (transactions[i].id === id) {
+            transactions.splice(i, 1);
+            break;
+        }
+    }
+    showTransactions();
+    updateBalance();
 }
-document.getElementById('summary').style.display = 'none';
-function toggleSummary() {
-    const summary = document.getElementById('summary');
-    summary.style.display = summary.style.display === 'none' ? 'block' : 'none';
+function updateBalance() {
+    let balance = 0;
+    for (let i = 0; i < transactions.length; i++) {
+        if (transactions[i].type === 'income') {
+            balance += parseFloat(transactions[i].amount);
+        } else if (transactions[i].type === 'expense') {
+            balance -= parseFloat(transactions[i].amount);
+        }
+    }
+    document.querySelector('.balance').textContent = balance;
 }
+showTransactions();
+updateBalance();

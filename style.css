@@ -1,164 +1,20 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
-/* Body */
 body {
+  background-color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f0f2f5;
-  color: #333;
   min-height: 100vh;
-  margin: 0;
+  overflow-x: hidden;
 }
 
-/* Container */
-.container {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Headings */
-h1, h2, h3 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-h1 {
-  font-size: 2em;
-  margin-top: 20px;
-}
-
-h2, h3 {
-  font-size: 1.5em;
-}
-
-/* Summary Section */
-#summary {
-  padding: 20px;
-  background-color: #eef2f5;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-#summary p {
-  font-size: 1.1em;
-  margin: 10px 0;
-}
-
-#monthlyBudget {
-  padding: 8px;
-  font-size: 1em;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 50%;
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 1em;
-  font-weight: bold;
-  color: #fff;
-  background-color: #000000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: black;
-}
-
-/* Filter Section with Button */
-.filter-expenses {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-}
-
-#expenseSectionTitle {
-  margin-right: auto;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-#filterButton {
-  padding: 5px 10px;
-  font-size: 0.9em;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#filterButton:hover {
-  background-color: #0056b3;
-}
-
-#filterButton:active {
-  background-color: #004085;
-}
-
-/* Form Sections */
-#incomeSection, #expenseSection {
-  margin-bottom: 20px;
-}
-
-input[type="text"], input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fafafa;
-  font-size: 1em;
-}
-
-button {
-  width: 100%;
-  margin-top: 10px;
-}
-
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-thead {
-  background-color: #333;
-  color: #fff;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* Navbar */
 .navbar {
   background-color: black;
   padding: 15px 40px;
@@ -173,4 +29,118 @@ tbody tr:nth-child(even) {
   font-size: 35px;
   font-weight: 700;
   margin-left: 50px;
+}
+
+.balance-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  color: #ffffff;
+  margin-right: 50px;
+}
+
+.currency {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.balance {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.content {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  color: white;
+}
+
+.secondTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form#expForm {
+  display: grid;
+  gap: 15px;
+}
+
+.formLine label {
+  font-size: 18px;
+  margin-right: 10px;
+  color: white;
+}
+
+input, select {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+}
+.buttonSave {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.buttonSave:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: black;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #333;
+  color: white;
+  font-size: 18px;
+}
+
+thead th {
+  padding: 15px;
+}
+
+tbody tr {
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+tbody td {
+  padding: 12px;
+}
+
+.deleteButton {
+  color: #ff4d4d;
+  font-weight: bold;
+  cursor: pointer;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
 }
