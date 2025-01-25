@@ -93,9 +93,34 @@ body {
 
 .main-content {
   display: flex;
+  flex-direction: column;
   gap: 24px;
-  flex: 1;
   padding: 20px;
+}
+
+.budget{
+  display: flex;
+  flex-direction: row;
+  gap:20px;
+}
+
+.banner-card{
+  width: 1350px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  
+}
+
+.l-card{
+  width: 510px;
+  height: 390px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
 }
 
 .card {
@@ -106,7 +131,6 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-title {
