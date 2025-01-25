@@ -2,15 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Haas Grot Text Web', sans-serif; /* Updated font-family */
+  font-family: 'Haas Grot Text Web', sans-serif;
 }
 
 body {
   background: black;
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -23,12 +20,11 @@ body {
   align-items: center;
   justify-content: space-between;
   backdrop-filter: blur(10px);
-  margin-top: 20px;
 }
 
 .navbar-brand .logo-image {
-  height: 40px; 
-  width: auto; 
+  height: 40px;
+  width: auto;
   margin-left: 20px;
 }
 
@@ -52,13 +48,59 @@ body {
   color: white;
 }
 
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
+.dashboard-container {
+  display: flex;
+  min-height: calc(100vh - 80px);
+}
+
+.icon{
+  width: 60px;
+  height: 60px;
+} 
+.left-menu i {
+  font-size: 24px;
+  color: white;
+  transition: 0.3s ease;
+}
+.left-menu {
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 18px;
+  width: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 32px;
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.left-menu ul {
+  list-style: none;
+}
+
+.left-menu ul li {
+  margin-bottom: 15px;
+}
+
+.left-menu ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.main-content {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  padding: 20px;
 }
 
 .card {
+  width: 400px;
+  height: 390px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 20px;
@@ -110,7 +152,7 @@ input::placeholder {
   padding: 12px;
   font-size: 16px;
   font-weight: 600;
-  color:black;
+  color: black;
   background: white;
   border: none;
   border-radius: 10px;

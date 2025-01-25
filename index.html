@@ -6,6 +6,8 @@
     <title>Telda - Budget Tracker</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/your-kit-id.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
@@ -18,44 +20,62 @@
         </div>
     </nav>
 
-
-    <div class="container">
-        <div class="card">
-            <h3 class="card-title">Add a New Transaction</h3>
-            <form id="expForm">
-                <div class="form-group">
-                    <label for="type">Type:</label>
-                    <select id="type">
-                        <option value="chooseOne">Choose one</option>
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
+    <div class="dashboard-container">
+        <!-- Left Menu -->
+        <div class="left-menu">
+                <div>
+                    <i class="fas fa-home"></i>
                 </div>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" placeholder="Enter transaction name">
+                <div>
+                        <i class="fas fa-exchange-alt"></i>
                 </div>
-                <div class="form-group">
-                    <label for="amount">Amount:</label>
-                    <input type="text" id="amount" placeholder="Enter amount">
+                <div>
+                        <i class="fas fa-chart-line"></i> 
                 </div>
-                <button type="submit" class="buttonSave">Add Transaction</button>
-            </form>
+                <div>
+                        <i class="fas fa-cog"></i>
+                </div>
         </div>
 
-        <div class="card">
-            <h3 class="card-title">Transactions</h3>
-            <table class="transaction-table">
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Name</th>
-                        <th>Amount</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody id="transactionTable"></tbody>
-            </table>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="card">
+                <h3 class="card-title">Add a New Transaction</h3>
+                <form id="expForm">
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <select id="type">
+                            <option value="chooseOne">Choose one</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" placeholder="Enter transaction name">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="text" id="amount" placeholder="Enter amount">
+                    </div>
+                    <button type="submit" class="buttonSave">Add Transaction</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Transactions</h3>
+                <table class="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionTable"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
